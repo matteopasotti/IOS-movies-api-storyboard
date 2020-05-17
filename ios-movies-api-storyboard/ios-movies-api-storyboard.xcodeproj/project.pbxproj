@@ -13,6 +13,7 @@
 		C046C17D2471BDA400BF15A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C046C17B2471BDA400BF15A8 /* Main.storyboard */; };
 		C046C17F2471BDA600BF15A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C046C17E2471BDA600BF15A8 /* Assets.xcassets */; };
 		C046C1822471BDA600BF15A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C046C1802471BDA600BF15A8 /* LaunchScreen.storyboard */; };
+		C046C18A2471C00A00BF15A8 /* MoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C046C1892471C00A00BF15A8 /* MoviesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C046C17E2471BDA600BF15A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C046C1812471BDA600BF15A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C046C1832471BDA600BF15A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C046C1892471C00A00BF15A8 /* MoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				C046C1742471BDA400BF15A8 /* ios-movies-api-storyboard */,
+				C046C1832471BDA600BF15A8 /* Info.plist */,
 				C046C1732471BDA400BF15A8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,13 +61,45 @@
 			children = (
 				C046C1752471BDA400BF15A8 /* AppDelegate.swift */,
 				C046C1772471BDA400BF15A8 /* SceneDelegate.swift */,
-				C046C1792471BDA400BF15A8 /* ViewController.swift */,
-				C046C17B2471BDA400BF15A8 /* Main.storyboard */,
-				C046C17E2471BDA600BF15A8 /* Assets.xcassets */,
-				C046C1802471BDA600BF15A8 /* LaunchScreen.storyboard */,
-				C046C1832471BDA600BF15A8 /* Info.plist */,
+				C046C18E2471C14100BF15A8 /* Model */,
+				C046C18B2471C0F100BF15A8 /* View */,
+				C046C18C2471C10800BF15A8 /* Controller */,
+				C046C18D2471C12300BF15A8 /* Supporting Files */,
 			);
 			path = "ios-movies-api-storyboard";
+			sourceTree = "<group>";
+		};
+		C046C18B2471C0F100BF15A8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C046C17B2471BDA400BF15A8 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C046C18C2471C10800BF15A8 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C046C1792471BDA400BF15A8 /* ViewController.swift */,
+				C046C1892471C00A00BF15A8 /* MoviesListViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C046C18D2471C12300BF15A8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C046C17E2471BDA600BF15A8 /* Assets.xcassets */,
+				C046C1802471BDA600BF15A8 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C046C18E2471C14100BF15A8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +176,7 @@
 				C046C17A2471BDA400BF15A8 /* ViewController.swift in Sources */,
 				C046C1762471BDA400BF15A8 /* AppDelegate.swift in Sources */,
 				C046C1782471BDA400BF15A8 /* SceneDelegate.swift in Sources */,
+				C046C18A2471C00A00BF15A8 /* MoviesListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
