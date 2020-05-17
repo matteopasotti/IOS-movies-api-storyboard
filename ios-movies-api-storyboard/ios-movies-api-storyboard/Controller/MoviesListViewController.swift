@@ -10,8 +10,27 @@ import UIKit
 
 class MoviesListViewController: UITableViewController {
     
+    var movies = ["Batman", "Jumanji", "Avengers"]
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieReusableCell")
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        movies.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let title = movies[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieReusableCell", for: indexPath) as! MovieCell
+        cell.movieTitle.text = title
+        
+        return cell
+        
     }
 }
