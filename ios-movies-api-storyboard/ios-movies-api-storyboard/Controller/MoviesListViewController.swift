@@ -42,6 +42,8 @@ class MoviesListViewController: UITableViewController {
         
     }
     
+
+    
     func loadMovies() {
         networkManager.fetchPopularMovies()
     }

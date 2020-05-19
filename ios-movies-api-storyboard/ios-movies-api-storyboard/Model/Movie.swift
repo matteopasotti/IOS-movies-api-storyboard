@@ -18,7 +18,7 @@ struct Movie: Decodable {
     let poster_path: String?
     var image: String {
         if poster_path != nil {
-            return "http://image.tmdb.org/t/p/w185\(poster_path!)"
+            return "http://image.tmdb.org/t/p/w300\(poster_path!)"
         } else {
             return ""
         }
