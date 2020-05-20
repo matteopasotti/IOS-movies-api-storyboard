@@ -11,7 +11,6 @@
 		C02F83AF2471E9F6007DFCE4 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02F83AE2471E9F6007DFCE4 /* NetworkManager.swift */; };
 		C046C1762471BDA400BF15A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C046C1752471BDA400BF15A8 /* AppDelegate.swift */; };
 		C046C1782471BDA400BF15A8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C046C1772471BDA400BF15A8 /* SceneDelegate.swift */; };
-		C046C17A2471BDA400BF15A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C046C1792471BDA400BF15A8 /* ViewController.swift */; };
 		C046C17D2471BDA400BF15A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C046C17B2471BDA400BF15A8 /* Main.storyboard */; };
 		C046C17F2471BDA600BF15A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C046C17E2471BDA600BF15A8 /* Assets.xcassets */; };
 		C046C1822471BDA600BF15A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C046C1802471BDA600BF15A8 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,8 @@
 		C046C1922471C1CE00BF15A8 /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C046C1902471C1CD00BF15A8 /* MovieCell.xib */; };
 		C094E09524741FAE00810356 /* NetworkManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E09424741FAE00810356 /* NetworkManagerDelegate.swift */; };
 		C094E0992474393D00810356 /* ImageDownloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E0982474393D00810356 /* ImageDownloading.swift */; };
+		C094E09B2474876900810356 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C094E09A2474876900810356 /* MovieDetailViewController.swift */; };
+		C094E09E24748DF900810356 /* Pacifico-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C094E09D24748DF900810356 /* Pacifico-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +29,6 @@
 		C046C1722471BDA400BF15A8 /* ios-movies-api-storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-movies-api-storyboard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C046C1752471BDA400BF15A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C046C1772471BDA400BF15A8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C046C1792471BDA400BF15A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C046C17C2471BDA400BF15A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C046C17E2471BDA600BF15A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C046C1812471BDA600BF15A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +38,8 @@
 		C046C1902471C1CD00BF15A8 /* MovieCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
 		C094E09424741FAE00810356 /* NetworkManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerDelegate.swift; sourceTree = "<group>"; };
 		C094E0982474393D00810356 /* ImageDownloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloading.swift; sourceTree = "<group>"; };
+		C094E09A2474876900810356 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
+		C094E09D24748DF900810356 /* Pacifico-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pacifico-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 		C046C1742471BDA400BF15A8 /* ios-movies-api-storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				C094E09C24748DCF00810356 /* fonts */,
 				C046C1752471BDA400BF15A8 /* AppDelegate.swift */,
 				C046C1772471BDA400BF15A8 /* SceneDelegate.swift */,
 				C046C18E2471C14100BF15A8 /* Model */,
@@ -95,8 +98,8 @@
 		C046C18C2471C10800BF15A8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				C046C1792471BDA400BF15A8 /* ViewController.swift */,
 				C046C1892471C00A00BF15A8 /* MoviesListViewController.swift */,
+				C094E09A2474876900810356 /* MovieDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -118,6 +121,14 @@
 				C094E09424741FAE00810356 /* NetworkManagerDelegate.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		C094E09C24748DCF00810356 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				C094E09D24748DF900810356 /* Pacifico-Regular.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 				C046C17F2471BDA600BF15A8 /* Assets.xcassets in Resources */,
 				C046C1922471C1CE00BF15A8 /* MovieCell.xib in Resources */,
 				C046C17D2471BDA400BF15A8 /* Main.storyboard in Resources */,
+				C094E09E24748DF900810356 /* Pacifico-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,13 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C094E0992474393D00810356 /* ImageDownloading.swift in Sources */,
-				C046C17A2471BDA400BF15A8 /* ViewController.swift in Sources */,
 				C046C1762471BDA400BF15A8 /* AppDelegate.swift in Sources */,
 				C02F83AD2471D502007DFCE4 /* Movie.swift in Sources */,
 				C02F83AF2471E9F6007DFCE4 /* NetworkManager.swift in Sources */,
 				C046C1782471BDA400BF15A8 /* SceneDelegate.swift in Sources */,
 				C046C1912471C1CE00BF15A8 /* MovieCell.swift in Sources */,
 				C046C18A2471C00A00BF15A8 /* MoviesListViewController.swift in Sources */,
+				C094E09B2474876900810356 /* MovieDetailViewController.swift in Sources */,
 				C094E09524741FAE00810356 /* NetworkManagerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

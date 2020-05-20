@@ -14,9 +14,12 @@ class MovieCell: UITableViewCell {
     
     @IBOutlet weak var movieTitle: UILabel!
     
+    @IBOutlet weak var voteAverage: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        movieImage.layer.cornerRadius = movieImage.frame.size.height / 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

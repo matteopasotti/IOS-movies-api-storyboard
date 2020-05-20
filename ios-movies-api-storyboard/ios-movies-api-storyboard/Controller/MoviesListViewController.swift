@@ -12,11 +12,15 @@ class MoviesListViewController: UITableViewController {
     
     var movies = [Movie]()
     
+    var movieSelected: Movie?
+    
     var networkManager = NetworkManager()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Movie Catalog"
         
         networkManager.delegate = self
         self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieReusableCell")
@@ -30,19 +34,30 @@ class MoviesListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let title = movies[indexPath.row].title
-        let image = movies[indexPath.row].image
+        let movie = movies[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieReusableCell", for: indexPath) as! MovieCell
-        cell.movieTitle.text = title
+        cell.movieTitle.text = movie.title
+        cell.voteAverage.text = "\(movie.vote_average)/10"
         
-        cell.movieImage.downloaded(from: image)
+        cell.movieImage.downloaded(from: movie.image)
         
         return cell
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        movieSelected = movies[indexPath.row]
+        self.performSegue(withIdentifier: "goToMovieDetail", sender: self)
+    }
+    
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToMovieDetail" {
+            let destination = segue.destination as! MovieDetailViewController
+            destination.movie = movieSelected
+        }
+    }
     
     func loadMovies() {
         networkManager.fetchPopularMovies()
