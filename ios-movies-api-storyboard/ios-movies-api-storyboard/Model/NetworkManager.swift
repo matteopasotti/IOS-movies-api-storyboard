@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkManager: ObservableObject {
+class NetworkManager {
     
     let apiKey = "d0ac984349d63f4af1bbea3359b8fdbc"
     
