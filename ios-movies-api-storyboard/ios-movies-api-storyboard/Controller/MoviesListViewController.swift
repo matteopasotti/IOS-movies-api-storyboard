@@ -12,8 +12,6 @@ class MoviesListViewController: UITableViewController {
     
     var movies = [Movie]()
     
-    var movieSelected: Movie?
-    
     var networkManager = NetworkManager()
     
     
@@ -47,16 +45,18 @@ class MoviesListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        movieSelected = movies[indexPath.row]
         self.performSegue(withIdentifier: "goToMovieDetail", sender: self)
     }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToMovieDetail" {
-            let destination = segue.destination as! MovieDetailViewController
-            destination.movie = movieSelected
+        
+        let destination = segue.destination as! MovieDetailViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destination.movie = movies[indexPath.row]
         }
+        
     }
     
     func loadMovies() {
