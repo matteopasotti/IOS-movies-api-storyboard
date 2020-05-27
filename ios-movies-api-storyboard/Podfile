@@ -1,0 +1,10 @@
+platform :ios, '9.0'
+
+target 'ios-movies-api-storyboard' do
+  
+  use_frameworks!
+
+  # Pods for ios-movies-api-storyboard
+  pod 'RealmSwift'
+
+end

@@ -1,0 +1,6 @@
+framework module Pods_ios_movies_api_storyboard {
+  umbrella header "Pods-ios-movies-api-storyboard-umbrella.h"
+
+  export *
+  module * { export * }
+}
