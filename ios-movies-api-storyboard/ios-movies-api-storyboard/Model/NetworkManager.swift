@@ -19,17 +19,21 @@ class NetworkManager {
     
     var movies : Results<Movie>?
     
+    let userDefaults = UserDefaults.standard
+    
+    let dateFormat = "dd/MM/yyyy"
+    
     func fetchPopularMovies() {
         
-        movies = getMoviesFromDB()
+        let lastDateSync = userDefaults.string(forKey: "lastDateSync")
         
-        if movies == nil || movies?.count == 0 {
-            //network request
-            getMoviesFromAPI()
-        } else {
+        if lastDateSync != nil && lastDateSync == getCurrentDate() {
+            movies = getMoviesFromDB()
             DispatchQueue.main.async {
                 self.delegate?.success(data: self.movies!.toArray(ofType: Movie.self) as [Movie])
             }
+        } else {
+            getMoviesFromAPI()
         }
         
     }
@@ -46,7 +50,9 @@ class NetworkManager {
                     if let safeData = data {
                         do {
                             let items = try decoder.decode(Movies.self, from: safeData)
+                            
                             DispatchQueue.main.async {
+                                self.userDefaults.setValue(self.getCurrentDate(), forKey: "lastDateSync")
                                 self.saveMoviesIntoDB(movies: items.results)
                                 self.delegate?.success(data: items.results)
                             }
@@ -75,6 +81,12 @@ class NetworkManager {
             print("Error saving movies, \(error)")
         }
         
+    }
+    
+    func getCurrentDate() -> String {
+        let df = DateFormatter()
+        df.dateFormat = dateFormat
+        return df.string(from: Date())
     }
    
 }
