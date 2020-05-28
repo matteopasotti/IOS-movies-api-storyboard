@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 class NetworkManager {
     
@@ -14,7 +15,26 @@ class NetworkManager {
     
     var delegate: NetworkManagerDelegate?
     
+    let realm = try! Realm()
+    
+    var movies : Results<Movie>?
+    
     func fetchPopularMovies() {
+        
+        movies = getMoviesFromDB()
+        
+        if movies == nil || movies?.count == 0 {
+            //network request
+            getMoviesFromAPI()
+        } else {
+            DispatchQueue.main.async {
+                self.delegate?.success(data: self.movies!.toArray(ofType: Movie.self) as [Movie])
+            }
+        }
+        
+    }
+    
+    func getMoviesFromAPI() {
         let urlString = "https://api.themoviedb.org/3/movie/popular?api_key=\(apiKey)&language=en-US&page=1"
         if  let url = URL(string: urlString) {
             
@@ -27,6 +47,7 @@ class NetworkManager {
                         do {
                             let items = try decoder.decode(Movies.self, from: safeData)
                             DispatchQueue.main.async {
+                                self.saveMoviesIntoDB(movies: items.results)
                                 self.delegate?.success(data: items.results)
                             }
                         } catch {
@@ -38,9 +59,35 @@ class NetworkManager {
             
             task.resume()
         }
-        
-        
     }
     
+    
+    func getMoviesFromDB() -> Results<Movie>? {
+        return realm.objects(Movie.self)
+    }
+    
+    func saveMoviesIntoDB(movies: [Movie]) {
+        do {
+            try realm.write {
+                realm.add(movies)
+            }
+        } catch {
+            print("Error saving movies, \(error)")
+        }
+        
+    }
    
+}
+
+extension Results {
+    func toArray<T>(ofType: T.Type) -> [T] {
+        var array = [T]()
+        for i in 0 ..< count {
+            if let result = self[i] as? T {
+                array.append(result)
+            }
+        }
+
+        return array
+    }
 }

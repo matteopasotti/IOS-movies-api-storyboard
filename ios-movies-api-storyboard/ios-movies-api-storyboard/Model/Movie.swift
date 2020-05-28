@@ -7,18 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
+
 
 struct Movies : Decodable {
     let results: [Movie]
 }
 
-struct Movie: Decodable {
-    let id: Int
-    let title: String
-    let overview: String
-    let poster_path: String?
-    let vote_average: Double
-    var image: String {
+class Movie: Object, Decodable {
+    @objc dynamic var id: Int
+    @objc dynamic var title: String
+    @objc dynamic var overview: String
+    @objc dynamic var poster_path: String?
+    @objc dynamic var vote_average: Double
+    @objc dynamic var image: String {
         if poster_path != nil {
             return "http://image.tmdb.org/t/p/w780\(poster_path!)"
         } else {
