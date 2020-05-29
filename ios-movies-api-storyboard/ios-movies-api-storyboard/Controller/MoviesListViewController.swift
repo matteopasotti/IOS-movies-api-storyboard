@@ -69,6 +69,10 @@ extension MoviesListViewController: NetworkManagerDelegate {
     
     func success(data: [Movie]) {
         self.movies = data
+        for movie in movies {
+            print("MOVIE : \(movie.title), ID : \(movie.id)")
+        }
+        
         self.tableView.reloadData()
     }
     

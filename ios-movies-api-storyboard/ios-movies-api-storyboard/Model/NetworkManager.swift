@@ -30,7 +30,8 @@ class NetworkManager {
         if lastDateSync != nil && lastDateSync == getCurrentDate() {
             movies = getMoviesFromDB()
             DispatchQueue.main.async {
-                self.delegate?.success(data: self.movies!.toArray(ofType: Movie.self) as [Movie])
+                let moviesArray = self.movies!.toArray(ofType: Movie.self) as [Movie]
+                self.delegate?.success(data: moviesArray)
             }
         } else {
             getMoviesFromAPI()
@@ -52,6 +53,7 @@ class NetworkManager {
                             let items = try decoder.decode(Movies.self, from: safeData)
                             
                             DispatchQueue.main.async {
+                                self.deleteMoviesFromDB()
                                 self.userDefaults.setValue(self.getCurrentDate(), forKey: "lastDateSync")
                                 self.saveMoviesIntoDB(movies: items.results)
                                 self.delegate?.success(data: items.results)
@@ -81,6 +83,19 @@ class NetworkManager {
             print("Error saving movies, \(error)")
         }
         
+    }
+    
+    func deleteMoviesFromDB() {
+        do {
+            
+            let allMovies = realm.objects(Movie.self)
+            
+            try realm.write {
+                realm.delete(allMovies)
+            }
+        } catch {
+            print("Error deleting movies, \(error)")
+        }
     }
     
     func getCurrentDate() -> String {
