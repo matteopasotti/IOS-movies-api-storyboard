@@ -10,23 +10,21 @@ import Foundation
 import UIKit
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        contentMode = mode
-        image = UIImage(named: "placeholder_dark")
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() { [weak self] in
-                self?.image = image
+    
+    func imageDownload(from url: String) {
+        guard let url = URL(string: url) else { return }
+        self.kf.indicatorType = .activity
+        self.kf.setImage(with: url, placeholder: UIImage(named: "placeholder_dark"), options: [
+        .scaleFactor(UIScreen.main.scale),
+        .transition(.fade(1)),
+        .cacheOriginalImage], progressBlock: nil) { result in
+            switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
             }
-        }.resume()
-    }
-    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFill) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
+        }
+        
     }
 }

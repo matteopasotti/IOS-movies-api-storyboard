@@ -19,7 +19,7 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
         
         if let safeMovie = movie {
-            movieImage.downloaded(from: safeMovie.image)
+            movieImage.imageDownload(from: safeMovie.image)
             movieTitle.text = safeMovie.title
             movieOverview.text = safeMovie.overview
         }

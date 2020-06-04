@@ -7,13 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MoviesListViewController: UITableViewController {
     
     var movies = [Movie]()
     
     var networkManager = NetworkManager()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,13 +37,12 @@ class MoviesListViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MovieReusableCell", for: indexPath) as! MovieCell
         cell.movieTitle.text = movie.title
         cell.voteAverage.text = "\(movie.vote_average)/10"
-        
-        cell.movieImage.downloaded(from: movie.image)
+        cell.imageView?.imageDownload(from: movie.image)
         
         return cell
         
     }
-    
+        
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "goToMovieDetail", sender: self)
     }
@@ -69,9 +68,6 @@ extension MoviesListViewController: NetworkManagerDelegate {
     
     func success(data: [Movie]) {
         self.movies = data
-        for movie in movies {
-            print("MOVIE : \(movie.title), ID : \(movie.id)")
-        }
         
         self.tableView.reloadData()
     }
