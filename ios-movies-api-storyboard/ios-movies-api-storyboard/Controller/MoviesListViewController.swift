@@ -21,7 +21,9 @@ class MoviesListViewController: UITableViewController {
         title = "Movie Catalog"
         
         networkManager.delegate = self
-        self.tableView.register(UINib(nibName: "MovieCell", bundle: nil), forCellReuseIdentifier: "MovieReusableCell")
+        
+        tableView.register(CodeMovieCell.self,
+        forCellReuseIdentifier: String(describing: CodeMovieCell.self))
         
         loadMovies()
     }
@@ -34,10 +36,11 @@ class MoviesListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let movie = movies[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MovieReusableCell", for: indexPath) as! MovieCell
-        cell.movieTitle.text = movie.title
-        cell.voteAverage.text = "\(movie.vote_average)/10"
-        cell.imageView?.imageDownload(from: movie.image)
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: CodeMovieCell.self)) as! CodeMovieCell
+        
+        cell.titleLabel.text = movie.title
+        cell.avgLabel.text = "\(movie.vote_average)/10"
+        cell.movieImage.imageDownload(from: movie.image)
         
         return cell
         
